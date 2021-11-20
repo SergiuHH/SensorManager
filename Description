@@ -1,0 +1,4 @@
+Il progetto consiste nel reperire dei dati da un sito fornito e migliorarne l'interfaccia grafica, aggiungendo un grafico per i sensori di tipo non toggle.
+Eseguiamo una fetch al sito https://hf3xzw.deta.dev/, creiamo i contenitori per i dati, nel mio caso si tratta di card poste all'interno di 2 container, 
+uno per i sensori di tipo toggle e l'altro per i sensori che memorizzano dati in tempo reale.
+Infine per i sensori di tipo toggle andiamo 
