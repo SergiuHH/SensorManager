@@ -1,29 +1,70 @@
-
 let container = document.getElementById("container")
 container.classList.add('uk-child-width-expand@s')
 
 
-function myFunction() {
 
-  var btn = document.getElementById("myButton");
+function myFunctionSensor1() {
 
-  if (btn.value == "true") {
-      btn.value = "false";
-      btn.innerHTML = "false";
+  var btn = document.getElementById("myButton1");
+
+  if (btn.value1 == "true") {
+      btn.value1 = "false";
+      btn.innerHTML ="false"
   }
   else {
-      btn.value = "true";
-      btn.innerHTML = "true";
+      btn.value1 = "true";
+      btn.innerHTML ="true"
   }
-
+  changeStatus(4);
 }
+function myFunctionSensor2() {
 
+  var btn = document.getElementById("myButton2");
+
+  if (btn.value2 == "true") {
+      btn.value2 = "false";
+      btn.innerHTML ="false"
+  }
+  else {
+      btn.value2 = "true";
+      btn.innerHTML ="true"
+  }
+  changeStatus(2);
+}
+function myFunctionSensor3() {
+
+  var btn = document.getElementById("myButton3");
+
+  if (btn.value3 == "true") {
+      btn.value3 = "false";
+      btn.innerHTML ="true"
+  }
+  else {
+      btn.value3 = "true";
+      btn.innerHTML ="false"
+  }
+  changeStatus(3);
+}
+function myFunctionSensor0() {
+
+  var btn = document.getElementById("myButton0");
+
+  if (btn.value0 == "true") {
+      btn.value0 = "false";
+      btn.innerHTML ="false"
+  }
+  else {
+      btn.value0 = "true";
+      btn.innerHTML ="true"
+  }
+  changeStatus(1);
+}
 
 
 let container2 = document.getElementById("container2")
 container2.classList.add('uk-child-width-expand@s')
 
-fetch("https://hf3xzw.deta.dev/")
+fetch("https://python-iot-sim.professorandrea.repl.co")
   .then(r => r.json()) // (1)
   .then(body => {
     for(let i = 0; i < 4; i++)
@@ -38,17 +79,20 @@ fetch("https://hf3xzw.deta.dev/")
         <p> <c style= "font-weight: 900"> readonly</c>: ${sensor.readonly}</p>
         <p> <c style= "font-weight: 900"> state_code</c>: ${sensor.state_code}</p>
         <p> <c style= "font-weight: 900"> value</c>:<d id ="value" >
-        <button style= "font-weight: 900" onclick="myFunction()" id="myButton" value="value">${sensor.value}</button>
+        <button style= "font-weight: 900" onclick="myFunctionSensor${i}()" id="myButton${i}"
+         value="value${i}">${sensor.value}</button>
          </d></p>
         `
-        console.log(sensor.value[i])
+
         newCard.classList.add('card')
         newCard.classList.add('hvr-float-shadow')
         container.appendChild(newCard)
     }
   }); 
 
-    fetch("https://hf3xzw.deta.dev/")
+    
+  
+    fetch("https://python-iot-sim.professorandrea.repl.co")
     .then(r => r.json()) // (1)
     .then(body => {
     for(let i = 4; i < 8; i++)
@@ -77,7 +121,7 @@ fetch("https://hf3xzw.deta.dev/")
 
         
         for (let index = 0; index < 10; index++) {
-          fetch("https://hf3xzw.deta.dev/")
+          fetch("https://python-iot-sim.professorandrea.repl.co")
             .then((r) => r.json()) // (1)
             .then((body) => {
               const sensorLabel = JSONToSensor(body["sensors"][5])
@@ -121,6 +165,23 @@ fetch("https://hf3xzw.deta.dev/")
         
     
       }
+      sensor[5].setInterval
 
   });
  
+
+
+  function changeStatus(s) {
+    let stringa = "https://python-iot-sim.professorandrea.repl.co/s-0" + s + "/toggle";
+    fetch(stringa, {
+      method: "PUT", 
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log("Success:", result);
+      })
+        .catch((error) => {
+        console.error("Error:", error);
+      });
+  
+  }
