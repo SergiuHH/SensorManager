@@ -64,7 +64,7 @@ function myFunctionSensor0() {
 let container2 = document.getElementById("container2")
 container2.classList.add('uk-child-width-expand@s')
 
-fetch("https://python-iot-sim.professorandrea.repl.co")
+fetch("https://hf3xzw.deta.dev/")
   .then(r => r.json()) // (1)
   .then(body => {
     for(let i = 0; i < 4; i++)
@@ -92,7 +92,7 @@ fetch("https://python-iot-sim.professorandrea.repl.co")
 
     
   
-    fetch("https://python-iot-sim.professorandrea.repl.co")
+    fetch("https://hf3xzw.deta.dev/")
     .then(r => r.json()) // (1)
     .then(body => {
     for(let i = 4; i < 8; i++)
@@ -121,7 +121,7 @@ fetch("https://python-iot-sim.professorandrea.repl.co")
 
         
         for (let index = 0; index < 10; index++) {
-          fetch("https://python-iot-sim.professorandrea.repl.co")
+          fetch("https://hf3xzw.deta.dev/")
             .then((r) => r.json()) // (1)
             .then((body) => {
               const sensorLabel = JSONToSensor(body["sensors"][5])
@@ -172,7 +172,7 @@ fetch("https://python-iot-sim.professorandrea.repl.co")
 
 
   function changeStatus(s) {
-    let stringa = "https://python-iot-sim.professorandrea.repl.co/s-0" + s + "/toggle";
+    let stringa = "https://hf3xzw.deta.dev/" + s + "/toggle";
     fetch(stringa, {
       method: "PUT", 
     })
@@ -185,3 +185,23 @@ fetch("https://python-iot-sim.professorandrea.repl.co")
       });
   
   }
+
+  //Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
